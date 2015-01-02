@@ -69,8 +69,6 @@ concordance_diff_test_beta = function(x1, x2, alternative, conf.level,
   }
 
   # Get the confidence interval.
-  a = estimate['shape1']
-  b = estimate['shape2']
   alpha = (1-conf.level)/2
   conf_int = c(qbeta(alpha, estimate['shape1'], estimate['shape2'], 
                      lower.tail=TRUE) * nrow(x2) / nrow(x1),
