@@ -54,7 +54,7 @@ concordance_diff_test_beta = function(x1, x2, alternative, conf.level,
   
   # Get the p-value and confidence interval.
   if (alternative == "two.sided") {
-    p.value = max(pbeta(conc_normalized, estimate['shape1'], estimate['shape2'],
+    p.value = min(pbeta(conc_normalized, estimate['shape1'], estimate['shape2'],
                         lower.tail=FALSE),
                   pbeta(conc_normalized, estimate['shape1'], estimate['shape2'],
                         lower.tail=TRUE))
@@ -69,14 +69,13 @@ concordance_diff_test_beta = function(x1, x2, alternative, conf.level,
   }
 
   # Get the confidence interval.
-  #conf_int_sd = sqrt(2*(nrow(x2)-nrow(x1))/(nrow(x1)*(nrow(x2)+2))/ncol(x2))
   a = estimate['shape1']
   b = estimate['shape2']
-  conf_int_sd = a*b / ( (a+b)^2 * ( (a+b+1) ) ) * nrow(x2) / nrow(x1)
-  
   alpha = (1-conf.level)/2
-  conf_int = c(qnorm(alpha, 1, conf_int_sd, lower.tail=TRUE), 
-               qnorm(alpha, 1, conf_int_sd, lower.tail=FALSE))
+  conf_int = c(qbeta(alpha, estimate['shape1'], estimate['shape2'], 
+                     lower.tail=TRUE) * nrow(x2) / nrow(x1),
+               qbeta(alpha, estimate['shape1'], estimate['shape2'], 
+                     lower.tail=FALSE) * nrow(x2) / nrow(x1))
 
   # Get the null.value
   null.value = 1
