@@ -10,4 +10,5 @@ Description: This package calculates the concordance (similarity) between
   of data sets and can be used to test if a subset of data represents a 
   larger set or if two data sets can be fused (merged) to increase
   power in regression challenges.
+Depends: Matrix
 License: Apache License 2.0
