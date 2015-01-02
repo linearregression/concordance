@@ -1,0 +1,13 @@
+Package: conordance
+Type: Package
+Title: Calculate and test concordance between datasets
+Version: 0.1
+Date: 2015-01-02
+Author: Michael J. Kane
+Maintainer: Michael Kane <kaneplusplus@gmail.com>
+Description: This package calculates the concordance (similarity) between
+  data sets. Concordance measures are based on the correlation structures
+  of data sets and can be used to test if a subset of data represents a 
+  larger set or if two data sets can be fused (merged) to increase
+  power in regression challenges.
+License: Apache License 2.0
